@@ -1,9 +1,10 @@
 <?php
 
+// solicitar los archivos "articulo.php", "bebida.php", "pizza.php";
 require("articulo.php");
 require("bebida.php");
 require("pizza.php");
-// solicitar los archivos "articulo.php", "bebida.php", "pizza.php";
+
 
 // Inicialización de los artículos
 $articulos = [
@@ -24,14 +25,54 @@ mostrarMenu($articulos);
 mostrarMasVendidos($articulos);
 mostrarMasLucrativos($articulos);
 
+
+
+
+
+
+
+
 function mostrarMenu($articulos) {
+    foreach ($articulos as $articulo) {
+        if ($articulo instanceof Pizza) {
+            return "{$articulo->nombre} - Precio: {$articulo->precio}€";
+        }
+    }
 
+    foreach ($articulos as $articulo) {
+        if ($articulo instanceof Bebida) {
+            return "{$articulo->nombre} - Precio: {$articulo->precio}€";
+        }
+    }
+ 
+    foreach ($articulos as $articulo) {
+        if (!($articulo instanceof Pizza) && !($articulo instanceof Bebida)) {
+            return "{$articulo->nombre} - Precio: {$articulo->precio}€";
+        }
+    }
 }
-
+ 
 function mostrarMasVendidos($articulos) {
-
+    usort($articulos, function ($a, $b) {
+        return $b->contador - $a->contador;
+    });
+ 
+    for ($i = 0; $i < 3; $i++) {
+        return "{$articulos[$i]->nombre} - Vendidos : {$articulos[$i]->contador}";
+    }
 }
-
+ 
 function mostrarMasLucrativos($articulos) {
-
+    usort($articulos, function ($a, $b) {
+        $beneficioA = ($a->precio - $a->coste) * $a->contador;
+        $beneficioB = ($b->precio - $b->coste) * $b->contador;
+ 
+        return $beneficioB - $beneficioA;
+    });
+    foreach ($articulos as $articulo) {
+        $beneficio = ($articulo->precio - $articulo->coste) * $articulo->contador;
+        return "{$articulo->nombre} - Beneficio: {$beneficio}€";
+    }
 }
+
+include ('vista.php');
