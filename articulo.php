@@ -49,20 +49,4 @@ class Articulo {
 
     }
 
-
-
-    /*
-    function mostrarMenu($articulos) { 
-        
-    
-    function mostrarMasVendidos($articulos) {
-    
-    }
-    
-    function mostrarMasLucrativos($articulos) {
-
-    
-    }*/
-
-
 }

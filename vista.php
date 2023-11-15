@@ -22,9 +22,9 @@
    
 
    echo"<h2>Los más vendidos</h2>";
-   echo mostrarMasVendidos($precio);
-   
+   echo mostrarMasVendidos($articulos);
 
    echo"<h2>¡Los más lucrativos!</h2>";
+   echo mostrarMasLucrativos($articulos);
    
    

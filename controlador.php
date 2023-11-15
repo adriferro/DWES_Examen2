@@ -20,34 +20,27 @@ $articulos = [
 
 // Ejemplo de uso
 
-
 mostrarMenu($articulos);
 mostrarMasVendidos($articulos);
 mostrarMasLucrativos($articulos);
 
 
-
-
-
-
-
-
 function mostrarMenu($articulos) {
     foreach ($articulos as $articulo) {
         if ($articulo instanceof Pizza) {
-            return "{$articulo->nombre} - Precio: {$articulo->precio}€";
+            echo "{$articulo->nombre}<br>";
         }
     }
 
     foreach ($articulos as $articulo) {
         if ($articulo instanceof Bebida) {
-            return "{$articulo->nombre} - Precio: {$articulo->precio}€";
+            echo "{$articulo->nombre}<br>";
         }
     }
  
     foreach ($articulos as $articulo) {
         if (!($articulo instanceof Pizza) && !($articulo instanceof Bebida)) {
-            return "{$articulo->nombre} - Precio: {$articulo->precio}€";
+            echo "{$articulo->nombre}<br>";
         }
     }
 }
@@ -58,7 +51,7 @@ function mostrarMasVendidos($articulos) {
     });
  
     for ($i = 0; $i < 3; $i++) {
-        return "{$articulos[$i]->nombre} - Vendidos : {$articulos[$i]->contador}";
+        echo "{$articulos[$i]->nombre} - Vendidos : {$articulos[$i]->contador}<br>";
     }
 }
  
@@ -71,7 +64,7 @@ function mostrarMasLucrativos($articulos) {
     });
     foreach ($articulos as $articulo) {
         $beneficio = ($articulo->precio - $articulo->coste) * $articulo->contador;
-        return "{$articulo->nombre} - Beneficio: {$beneficio}€";
+         echo "{$articulo->nombre} - Beneficio: {$beneficio}€<br>";
     }
 }
 
