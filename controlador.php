@@ -21,30 +21,9 @@ $articulos = [
 
 // Ejemplo de uso
 
-mostrarMenu($articulos);
 mostrarMasVendidos($articulos);
 mostrarMasLucrativos($articulos);
 
-
-function mostrarMenu($articulos) {
-    foreach ($articulos as $articulo) {
-        if ($articulo instanceof Pizza) {
-            echo "{$articulo->nombre}<br>";
-        }
-    }
-
-    foreach ($articulos as $articulo) {
-        if ($articulo instanceof Bebida) {
-            echo "{$articulo->nombre}<br>";
-        }
-    }
- 
-    foreach ($articulos as $articulo) {
-        if (!($articulo instanceof Pizza) && !($articulo instanceof Bebida)) {
-            echo "{$articulo->nombre}<br>";
-        }
-    }
-}
  
 function mostrarMasVendidos($articulos) {
     usort($articulos, function ($a, $b) {
